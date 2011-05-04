@@ -19,6 +19,8 @@ setTimeout(function() {
 
   if(!ls('thumbstore'))       ls('thumbstore', {});
   if(!ls('updatethumbs'))     ls('updatethumbs', true);
+
+  if(!ls('appindex'))         ls('appindex', []);
 },0);
 
 var lscache = {};

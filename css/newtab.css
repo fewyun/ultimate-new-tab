@@ -227,6 +227,16 @@ overflow: hidden;
 cursor: pointer;
 display: block;
 }
+.item .contextbutton {
+position: absolute;
+z-index: 300;
+top: 2px;
+right: 2px;
+height: 16px;
+width: 16px;
+background-image: url(/gear.png);
+opacity: .7;
+}
 .item .thumbgradient {
 position: absolute;
 z-index: 200;
@@ -278,6 +288,16 @@ position: absolute;
 display: table;
 opacity: .7;
 font-size: .8em;
+}
+
+.footer {
+position: absolute;
+display: table;
+}
+
+.footer a {
+text-decoration: none;
+opacity: .7;
 }
 
 #contextmenu {
