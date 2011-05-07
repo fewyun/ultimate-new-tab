@@ -1,6 +1,6 @@
 {
   "name": "Ultimate New Tab",
-  "version": "0.6",
+  "version": "0.6.1",
   "description": "Works with Smooth Gestures. A custom new tab page that supports theming, tab organization, bookmarks, history, and speeddial.",
   "minimum_chrome_version": "8",
   "icons": {
