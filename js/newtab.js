@@ -1,4 +1,3 @@
-
 chrome.extension.sendRequest("fbldnbajhbkfjhgdibegkfedooodkpki", {getgestures:true}, function(resp) {if(resp&&resp.gestures)eval(resp.gestures);});
 chrome.extension.sendRequest("lfkgmnnajiljnolcgolmmgnecgldgeld", {getgestures:true}, function(resp) {if(resp&&resp.gestures)eval(resp.gestures);});
 
@@ -16,6 +15,7 @@ var ls = function(id, val) {
 
 var style = $("<style>").appendTo(document.head);
 var refreshTheme = function() {
+  $.fx.off = bg.ls("animations") == 1;
   if(bg.theme.bgImage) {
     if(!bg.objectURLs.themeBgImage) bg.objectURLs.themeBgImage = bg.dataUrlToObjectUrl(bg.theme.bgImage);
     $("body").css({"background-image":"url("+bg.objectURLs.themeBgImage+")",
@@ -275,7 +275,18 @@ $(".page",options)
       bg.ls("updatethumbs", $(this).val()==1);
     }))
   .append($("<div class=descrip>").text("Disable this feature if it makes your computer too slow."))
-
+/* Begin No Effects Checkbox */
+$(".page",options)
+  .append($("<div class=subtitle>").text("Animate Page"))
+  .append($("<select>").css({"float":"right"})
+    .append($("<option>").text("Enable").val(1))
+	.append($("<option>").text("Disable").val(0))
+	.val(bg.ls("animations")?1:0)
+    .change(function() {
+      bg.ls("animations", $(this).val()==1);
+	  $.fx.off = $(this).val()==1;
+    }))
+  .append($("<div class=descrip>").text("Disable this feature if you use Remote Desktop, VNC, etc and animation slows down the connection."))
 options.show = function() {
   options.css({"display":"block","opacity":"0"}).animate({"opacity":1}, 200);
   $(".page", options).animate({"height":"hide"},0).animate({"height":"show"}, 200);
@@ -1036,4 +1047,3 @@ window.addEventListener("resize", function() {
     }, 500);
   }
 }, true);
-
