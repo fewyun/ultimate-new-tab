@@ -15,7 +15,7 @@ var ls = function(id, val) {
 
 var style = $("<style>").appendTo(document.head);
 var refreshTheme = function() {
-  $.fx.off = bg.ls("animations") == 1;
+  $.fx.off = bg.ls("animation-off");
   if(bg.theme.bgImage) {
     if(!bg.objectURLs.themeBgImage) bg.objectURLs.themeBgImage = bg.dataUrlToObjectUrl(bg.theme.bgImage);
     $("body").css({"background-image":"url("+bg.objectURLs.themeBgImage+")",
@@ -280,11 +280,11 @@ $(".page",options)
   .append($("<div class=subtitle>").text("Animate Page"))
   .append($("<select>").css({"float":"right"})
     .append($("<option>").text("Enable").val(1))
-	.append($("<option>").text("Disable").val(0))
-	.val(bg.ls("animations")?1:0)
+    .append($("<option>").text("Disable").val(0))
+    .val(bg.ls("animation-off")?0:1)
     .change(function() {
-      bg.ls("animations", $(this).val()==1);
-	  $.fx.off = $(this).val()==1;
+      bg.ls("animation-off", $(this).val()!=1);
+      $.fx.off = $(this).val()!=1;
     }))
   .append($("<div class=descrip>").text("Disable this feature if you use Remote Desktop, VNC, etc and animation slows down the connection."))
 options.show = function() {
